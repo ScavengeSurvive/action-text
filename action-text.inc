@@ -1,3 +1,9 @@
+// built-in include guard removal
+// just in case the user has a local dependency with the same file name
+#if defined _inc_action_text
+	#undef _inc_action_text
+#endif
+// custom include-guard to ensure we don't duplicate
 #if defined _action_text_included
 	#endinput
 #endif
@@ -51,13 +57,13 @@ hook OnFilterScriptExit() {
 #endif
 
 _actionText_CreateUI(playerid) {
-	actionTextUI[playerid]			=CreatePlayerTextDraw(playerid, 320.000000, 320.000000, "_");
-	PlayerTextDrawAlignment			(playerid, actionTextUI[playerid], 2);
-	PlayerTextDrawBackgroundColor	(playerid, actionTextUI[playerid], 255);
-	PlayerTextDrawFont				(playerid, actionTextUI[playerid], 1);
-	PlayerTextDrawLetterSize		(playerid, actionTextUI[playerid], 0.300000, 1.499999);
-	PlayerTextDrawColor				(playerid, actionTextUI[playerid], -1);
-	PlayerTextDrawSetOutline		(playerid, actionTextUI[playerid], 1);
+	actionTextUI[playerid] = CreatePlayerTextDraw(playerid, 320.000000, 320.000000, "_");
+	PlayerTextDrawAlignment(playerid, actionTextUI[playerid], 2);
+	PlayerTextDrawBackgroundColor(playerid, actionTextUI[playerid], 255);
+	PlayerTextDrawFont(playerid, actionTextUI[playerid], 1);
+	PlayerTextDrawLetterSize(playerid, actionTextUI[playerid], 0.300000, 1.499999);
+	PlayerTextDrawColor(playerid, actionTextUI[playerid], -1);
+	PlayerTextDrawSetOutline(playerid, actionTextUI[playerid], 1);
 }
 
 _actionText_DeleteUI(playerid, doTD = false) {
@@ -79,7 +85,7 @@ stock ShowActionText(playerid, message[], time=0, width=200) {
 	viewingActionText[playerid] = true;
 
 	if(time != 0) {
-	    KillTimer(hideTimer[playerid]);
+		KillTimer(hideTimer[playerid]);
 		hideTimer[playerid] = SetTimerEx("_actionText_Hide", time, false, "d", playerid);
 	}
 

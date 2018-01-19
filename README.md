@@ -4,15 +4,15 @@ A simple UI library providing a centered text element for messages to prompt the
 
 ![https://i.imgur.com/Z1RRsCc.png](https://i.imgur.com/Z1RRsCc.png)
 
-## Usage
+## Installation
 
-Simply add to your `pawn.json` and include:
+Simply install to your project:
 
-```json
-{
-    "dependencies": ["ScavengeSurvive/action-text"]
-}
+```bash
+sampctl package install ScavengeSurvive/action-text
 ```
+
+Include in your code and begin using the library:
 
 ```pawn
 #include <action-text>

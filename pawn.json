@@ -1,10 +1,6 @@
 {
     "entry": "test.pwn",
     "output": "test.amx",
-    "dependencies": [
-        "Southclaws/samp-stdlib",
-        "ScavengeSurvive/test-boilerplate",
-        "Misiur/YSI-Includes",
-        "Zeex/amx_assembly"
-    ]
+    "dependencies": ["Southclaws/samp-stdlib", "pawn-lang/YSI-Includes"],
+    "dev_dependencies": ["ScavengeSurvive/test-boilerplate"]
 }

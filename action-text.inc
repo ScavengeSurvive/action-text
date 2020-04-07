@@ -10,7 +10,7 @@
 #define _action_text_included
 
 #include <a_samp>
-#include <YSI\y_hooks>
+#include <YSI_Coding\y_hooks>
 
 
 forward ShowActionText(playerid, message[], time=0, width=200);

@@ -13,7 +13,7 @@
 #include <YSI_Coding\y_hooks>
 
 
-forward ShowActionText(playerid, message[], time=0, width=200);
+forward ShowActionText(playerid, const message[], time=0, width=200);
 /*
 # Description
 Display a small message in the center of the player's screen.
@@ -73,7 +73,7 @@ _actionText_DeleteUI(playerid, doTD = false) {
 	}
 }
 
-stock ShowActionText(playerid, message[], time=0, width=200) {
+stock ShowActionText(playerid, const message[], time=0, width=200) {
 	if(!IsPlayerConnected(playerid)) {
 		return 1;
 	}

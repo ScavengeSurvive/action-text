@@ -9,7 +9,7 @@
 #endif
 #define _action_text_included
 
-#include <a_samp>
+#include <open.mp>
 #include <YSI_Coding\y_hooks>
 
 
@@ -58,11 +58,11 @@ hook OnFilterScriptExit() {
 
 _actionText_CreateUI(playerid) {
 	actionTextUI[playerid] = CreatePlayerTextDraw(playerid, 320.000000, 320.000000, "_");
-	PlayerTextDrawAlignment(playerid, actionTextUI[playerid], 2);
-	PlayerTextDrawBackgroundColor(playerid, actionTextUI[playerid], 255);
-	PlayerTextDrawFont(playerid, actionTextUI[playerid], 1);
+	PlayerTextDrawAlignment(playerid, actionTextUI[playerid], TEXT_DRAW_ALIGN_CENTRE);
+	PlayerTextDrawBackgroundColour(playerid, actionTextUI[playerid], 255);
+	PlayerTextDrawFont(playerid, actionTextUI[playerid], TEXT_DRAW_FONT_STANDARD);
 	PlayerTextDrawLetterSize(playerid, actionTextUI[playerid], 0.300000, 1.499999);
-	PlayerTextDrawColor(playerid, actionTextUI[playerid], -1);
+	PlayerTextDrawColour(playerid, actionTextUI[playerid], -1);
 	PlayerTextDrawSetOutline(playerid, actionTextUI[playerid], 1);
 }
 

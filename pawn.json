@@ -1,6 +1,11 @@
 {
     "entry": "test.pwn",
     "output": "test.amx",
-    "dependencies": ["sampctl/samp-stdlib", "pawn-lang/YSI-Includes"],
+    "dependencies": [
+      "openmultiplayer/omp-stdlib",
+      "pawn-lang/samp-stdlib@open.mp",
+      "pawn-lang/pawn-stdlib@open.mp",
+      "pawn-lang/YSI-Includes"
+    ],
     "dev_dependencies": ["ScavengeSurvive/test-boilerplate"]
 }

@@ -4,7 +4,7 @@
 
 main() {}
 
-public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
+public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
 	if(IsPlayerViewingActionText(playerid)) {
 		SendClientMessage(playerid, -1, "ActionText is visible, hiding");
 		HideActionText(playerid);

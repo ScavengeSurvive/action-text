@@ -56,7 +56,7 @@ hook OnFilterScriptExit() {
 }
 #endif
 
-_actionText_CreateUI(playerid) {
+static _actionText_CreateUI(playerid) {
 	actionTextUI[playerid] = CreatePlayerTextDraw(playerid, 320.000000, 320.000000, "_");
 	PlayerTextDrawAlignment(playerid, actionTextUI[playerid], TEXT_DRAW_ALIGN_CENTRE);
 	PlayerTextDrawBackgroundColour(playerid, actionTextUI[playerid], 255);
@@ -66,7 +66,7 @@ _actionText_CreateUI(playerid) {
 	PlayerTextDrawSetOutline(playerid, actionTextUI[playerid], 1);
 }
 
-_actionText_DeleteUI(playerid, doTD = false) {
+static _actionText_DeleteUI(playerid, bool:doTD = false) {
 	if(doTD) {
 		PlayerTextDrawHide(playerid, actionTextUI[playerid]);
 		PlayerTextDrawDestroy(playerid, actionTextUI[playerid]);
@@ -119,4 +119,14 @@ stock bool:IsPlayerViewingActionText(playerid) {
 	}
 
 	return viewingActionText[playerid];
+}
+
+stock SetActionTextPos(playerid, Float:x, Float:y) {
+	if(!IsPlayerConnected(playerid)) {
+		return 1;
+	}
+
+	PlayerTextDrawSetPos(playerid, actionTextUI[playerid], x, y);
+
+	return 0;
 }

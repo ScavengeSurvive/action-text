@@ -120,3 +120,13 @@ stock bool:IsPlayerViewingActionText(playerid) {
 
 	return viewingActionText[playerid];
 }
+
+stock SetActionTextPos(playerid, Float:x, Float:y) {
+	if(!IsPlayerConnected(playerid)) {
+		return 1;
+	}
+
+	PlayerTextDrawSetPos(playerid, actionTextUI[playerid], x, y);
+
+	return 0;
+}

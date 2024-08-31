@@ -4,6 +4,9 @@
 
 main() {}
 
+#if !defined KEY
+	#define KEY: _:
+#endif
 public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys) {
 	if(IsPlayerViewingActionText(playerid)) {
 		SendClientMessage(playerid, -1, "ActionText is visible, hiding");

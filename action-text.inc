@@ -9,7 +9,28 @@
 #endif
 #define _action_text_included
 
-#include <open.mp>
+#tryinclude <open.mp>
+
+#if !defined _INC_open_mp
+	#include <a_samp>
+
+	#if !defined PlayerTextDrawBackgroundColour
+		#define PlayerTextDrawBackgroundColour PlayerTextDrawBackgroundColor
+	#endif
+
+	#if !defined PlayerTextDrawColour
+		#define PlayerTextDrawColour PlayerTextDrawColor
+	#endif
+
+	#if !defined TEXT_DRAW_ALIGN
+		#define TEXT_DRAW_ALIGN: _:
+	#endif
+
+	#if !defined TEXT_DRAW_FONT
+		#define TEXT_DRAW_FONT: _:
+	#endif
+#endif
+
 #include <YSI_Coding\y_hooks>
 
 
@@ -56,11 +77,11 @@ hook OnFilterScriptExit() {
 }
 #endif
 
-static _actionText_CreateUI(playerid) {
-	actionTextUI[playerid] = CreatePlayerTextDraw(playerid, 320.000000, 320.000000, "_");
-	PlayerTextDrawAlignment(playerid, actionTextUI[playerid], TEXT_DRAW_ALIGN_CENTRE);
+static _actionText_CreateUI(playerid, Float:x = 320.0, Float:y = 320.0) {
+	actionTextUI[playerid] = CreatePlayerTextDraw(playerid, x, y, "_");
+	PlayerTextDrawAlignment(playerid, actionTextUI[playerid], TEXT_DRAW_ALIGN:2);
 	PlayerTextDrawBackgroundColour(playerid, actionTextUI[playerid], 255);
-	PlayerTextDrawFont(playerid, actionTextUI[playerid], TEXT_DRAW_FONT_STANDARD);
+	PlayerTextDrawFont(playerid, actionTextUI[playerid], TEXT_DRAW_FONT:1);
 	PlayerTextDrawLetterSize(playerid, actionTextUI[playerid], 0.300000, 1.499999);
 	PlayerTextDrawColour(playerid, actionTextUI[playerid], -1);
 	PlayerTextDrawSetOutline(playerid, actionTextUI[playerid], 1);
@@ -126,7 +147,16 @@ stock SetActionTextPos(playerid, Float:x, Float:y) {
 		return 1;
 	}
 
-	PlayerTextDrawSetPos(playerid, actionTextUI[playerid], x, y);
+	#if defined PlayerTextDrawSetPos
+		PlayerTextDrawSetPos(playerid, actionTextUI[playerid], x, y);
+	#else
+		_actionText_DeleteUI(playerid, true);
+		_actionText_CreateUI(playerid, x, y);
+
+		if (IsPlayerViewingActionText(playerid)) {
+			PlayerTextDrawShow(playerid, actionTextUI[playerid]);
+		}
+	#endif
 
 	return 0;
 }

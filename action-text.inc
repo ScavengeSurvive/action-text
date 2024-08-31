@@ -34,7 +34,7 @@
 #include <YSI_Coding\y_hooks>
 
 
-forward ShowActionText(playerid, const message[], time=0, width=200);
+forward ShowActionText(playerid, const message[], time=0, Float:width=200.0);
 /*
 # Description
 Display a small message in the center of the player's screen.
@@ -94,13 +94,13 @@ static _actionText_DeleteUI(playerid, bool:doTD = false) {
 	}
 }
 
-stock ShowActionText(playerid, const message[], time=0, width=200) {
+stock ShowActionText(playerid, const message[], time=0, Float:width=200.0) {
 	if(!IsPlayerConnected(playerid)) {
 		return 1;
 	}
 
 	PlayerTextDrawSetString(playerid, actionTextUI[playerid], message);
-	PlayerTextDrawTextSize(playerid, actionTextUI[playerid], width, 300);
+	PlayerTextDrawTextSize(playerid, actionTextUI[playerid], width, 300.0);
 	PlayerTextDrawShow(playerid, actionTextUI[playerid]);
 
 	viewingActionText[playerid] = true;
